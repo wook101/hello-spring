@@ -23,11 +23,10 @@ public class MemberServiceIntegrationTest {
     MemberService memberService;
 
     @Test
-    @Commit
     public void 회원가입() throws Exception{
         //given 뭔가 주어졌을 때
         Member member = new Member();
-        member.setName("동우기테스트");
+        member.setName("동우기");
 
         //when 무엇을 검증하는가
         Long saveId = memberService.join(member);
