@@ -5,6 +5,7 @@ import hello.hellospring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@Transactional
+@Transactional  //자동으로 롤백됨
 public class MemberServiceIntegrationTest {
 
     @Autowired
@@ -22,10 +23,11 @@ public class MemberServiceIntegrationTest {
     MemberService memberService;
 
     @Test
+    @Commit
     public void 회원가입() throws Exception{
         //given 뭔가 주어졌을 때
         Member member = new Member();
-        member.setName("동우기");
+        member.setName("동우기테스트");
 
         //when 무엇을 검증하는가
         Long saveId = memberService.join(member);
